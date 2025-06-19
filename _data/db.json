@@ -1,0 +1,72 @@
+{
+  "all-data": {
+    "whoami": "userid0",
+    "profiles": {
+      "userid0": {
+        "display_name": "penguinlov3r",
+        "profile_picture": "pfp0.jpg",
+        "my-chats": ["chatid0", "chatid1"]
+      },
+      "userid1": {
+        "display_name": "Sparkle Star",
+        "profile_picture": "pfp1.jpg",
+        "my-chats": []
+      },
+      "userid2": {
+        "display_name": "نسبة نسبة نسبة",
+        "profile_picture": "pfp2.jpg",
+        "my-chats": ["chatid1"]
+      },
+        "userid3": {
+        "display_name": "dokibirdfan",
+        "profile_picture": "pfp0.jpg",
+        "my-chats": ["chatid1"]
+      }
+    },
+    "group-chats": {
+      "chatid0": {
+        "title": "Terraria Fans",
+        "url": "#",
+        "owner": "userid0",
+        "members": ["userid0", "userid1"],
+        "icon": "chat.svg",
+        "messages": {
+          "msgid0": {
+            "userid": "userid0",
+            "timestamp": "2025-06-17T12:00:00Z",
+            "text": "This is a Direct Message. I am penguinlov3r!"
+          },
+          "msgid1": {
+            "userid": "userid1",
+            "timestamp": "2025-06-17T12:01:00Z",
+            "text": "Nice to meet you penguinlov3r, I am Sparkle Star!"
+          },
+          "msgid2": {
+            "userid": "userid1",
+            "timestamp": "2025-06-17T12:01:00Z",
+            "text": "eeee"
+          }
+        }
+      },
+      "chatid1": {
+        "title": "Hololive Fan Club",
+        "url": "#",
+        "owner": "userid0",
+        "members": ["userid0", "userid1"],
+        "icon": "chat.svg",
+        "messages": {
+          "msgid0": {
+            "userid": "userid0",
+            "timestamp": "2025-06-17T12:00:00Z",
+            "text": "This is a Direct Message. I am penguinlov3r!"
+          },
+          "msgid1": {
+            "userid": "userid1",
+            "timestamp": "2025-06-17T12:01:00Z",
+            "text": "Nice to meet you penguinlov3r, I am Sparkle Star!"
+          }
+        }
+      }
+    }
+  }
+}

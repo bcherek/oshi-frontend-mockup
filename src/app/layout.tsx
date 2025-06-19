@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import ChatsSidebar from "@/components/chats-sidebar";
+import { ChatProvider } from "@/context/ChatContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +28,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
       >
-        {children}
+        {/* Code i copied from documentation. SidebarProvider needs to wrap
+        everything because it needs the context of the whole page */}
+        <SidebarProvider>
+          <ChatProvider>
+            <ChatsSidebar />
+            <main className="flex-1 flex flex-col h-full">
+              {/* (uncomment to make sidebar toggleable) <SidebarTrigger /> */}
+              {/* {children} */}
+            </main>
+          </ChatProvider>
+        </SidebarProvider>
       </body>
     </html>
   );
