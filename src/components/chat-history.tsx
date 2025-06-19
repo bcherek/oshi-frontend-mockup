@@ -4,6 +4,7 @@ import { getGroupChatMessages, Message } from "@/api/get-from-database";
 import { ChatMessage } from "./chat-message";
 
 export function ChatHistory(props: { userid: string; chatid: string }) {
+  console.log("ChatHistory", props);
   const [messages, setMessages] = useState<Message[] | null>(null);
 
   useEffect(() => {

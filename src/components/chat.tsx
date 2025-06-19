@@ -4,6 +4,7 @@ import { ChatHistory } from "@/components/chat-history";
 import { getChatContext } from "@/context/ChatContext";
 
 export async function Chat() {
+  console.log("chat function");
   const {chatid, userid} = getChatContext();
   const chatHistoryObj = (await ChatHistory({userid, chatid})) ?? null;
     
