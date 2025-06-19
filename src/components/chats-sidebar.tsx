@@ -1,25 +1,18 @@
-import { ChatSidebarButton } from "./chats-sidebar-menu-button";
 import {
-  getMyGroupChats,
   GroupChat,
-  Message,
-  getMe,
-  Profile,
+  Profile
 } from "@/api/get-from-database";
 import {
   Sidebar,
-  SidebarHeader,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu
 } from "@/components/ui/sidebar";
 
-import { getChatContext } from "@/context/ChatContext";
 import { ChatsSidebarClientBoundary } from "./chats-sidebar-client-boundary";
 
 // THIS IS A SERVER COMPONENT, NO USEEFFECT OR USE STATE

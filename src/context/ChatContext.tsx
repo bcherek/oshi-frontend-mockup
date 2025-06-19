@@ -10,7 +10,7 @@ type ChatContextType = {
 };
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
-
+ 
 export function ChatProvider({ children }: { children: ReactNode }) {
   const [userid, setUserID] = useState("userid0");
   const [chatid, setChatID] = useState("chatid0");
@@ -25,6 +25,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
   }
 
   return (
+    // things in value are shared to everyone in the context
     <ChatContext.Provider value={{ userid, chatid, switchChat, switchUser }}>
       {children}
     </ChatContext.Provider>

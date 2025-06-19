@@ -1,5 +1,6 @@
 'use client'
-import { ChatSidebarButton } from "./chats-sidebar-menu-button";
+import { useContext } from "react";
+import { ChatSidebarButton } from "./chats-sidebar-button";
 
 
 export function ChatsSidebarClientBoundary({chats}: {chats : {chatid:string, title: string, icon: string }[]}) {
@@ -12,6 +13,7 @@ export function ChatsSidebarClientBoundary({chats}: {chats : {chatid:string, tit
           key={groupChat.chatid}
           title={groupChat.title}
           icon={groupChat.icon}
+          chatid={groupChat.chatid}
         />
       ))}
     </>
