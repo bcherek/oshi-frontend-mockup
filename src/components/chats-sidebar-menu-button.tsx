@@ -7,6 +7,7 @@ export function ChatSidebarButton(groupChat: { title: string; icon: string }) {
      <SidebarMenuItem key={groupChat.title}>
                   <SidebarMenuButton asChild>
                     <button onClick={() => console.log("button pressed")}>
+                      {/* This is happening in the client! */}
                       <img
                         src={`/assets/${groupChat.icon}`}
                         className="w-4 h-4"
