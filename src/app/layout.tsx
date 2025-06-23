@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { ChatProvider } from "@/context/ChatContext";
 
@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <SidebarProvider>
           <ChatProvider>
-            <main className="flex-1 flex flex-col h-full">{children}</main>
+            <main className="flex-1 flex flex-col flex-grow h-full">{children}</main>
           </ChatProvider>
         </SidebarProvider>
       </body>

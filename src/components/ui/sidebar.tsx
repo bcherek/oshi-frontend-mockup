@@ -478,9 +478,8 @@ const sidebarMenuButtonVariants = cva(
   {
     variants: {
       variant: {
-        default: "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
-        outline:
-          "bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]",
+        selected: "bg-[var(--sidebar-btn-selected-bg)] text-[var(--sidebar-btn-selected-text)] hover:bg-[var(--sidebar-btn-selected-bg-hover)] hover:text-[var(--sidebar-btn-selected-text-hover)]",
+        default: "bg-[var(--sidebar-btn-default-bg)] text-[var(--sidebar-btn-default-text)] hover:bg-[var(--sidebar-btn-default-bg-hover)] hover:text-[var(--sidebar-btn-default-text-hover)]",
       },
       size: {
         default: "h-8 text-sm",
@@ -493,6 +492,7 @@ const sidebarMenuButtonVariants = cva(
       size: "default",
     },
   }
+  
 )
 
 function SidebarMenuButton({

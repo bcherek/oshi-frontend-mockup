@@ -1,7 +1,5 @@
 //DUMMYAPI
 
-import { groupCollapsed } from "console";
-
 // This is how a message exists in the json databse
 export interface Message {
   userid: string;
@@ -14,18 +12,28 @@ export interface GroupChat {
   title: string;
   owner: string; //userid of owner
   members: string[]; // array of userIDs
+  moderators: string[];
   icon: string;
   messages: Record<string, Message>; // O(1) message lookup by message ID
-
+  details: Details;
   chatid: string; //the is the SAME VALUE used for the lookup in the DB.
   //Not stored twice in the database; assigned in this file
   //This might not be best practice; needs code review
+}
+
+export interface Details {
+  "banner-image": string;
+  "background-image": string;
+  "description": string;
+  //rules are tuples: (RULEHEADER, DESCRIPTION) 
+  "rules": Array<[string, string]>;
 }
 
 export interface Profile {
     userid: string,
     display_name: string,
     profile_picture: string,
+    chat_color: string
 }
 
 async function getJSON(): Promise<any> {
@@ -39,9 +47,9 @@ export async function getProfile(userid: string) {
   let json;
   try {
     json = await getJSON();
-    console.log("Successfully got json");
+    // console.log("Successfully got json");
   } catch {
-    console.error("failed to get json");
+    // console.error("failed to get json");
     return null;
   }
   const myProfile: Profile = json["profiles"][userid];
@@ -54,7 +62,7 @@ export async function getProfile(userid: string) {
 }
 
 
-export async function getMe(): Promise<Profile | null>{
+export async function getMe(whoami: string): Promise<Profile | null>{
   console.log("getMe");
   let json;
   try {
@@ -64,16 +72,31 @@ export async function getMe(): Promise<Profile | null>{
     console.error("failed to get json");
     return null;
   }
-  const userid = json["whoami"];
-  const myProfile: Profile = json["profiles"][userid];
+  const myProfile: Profile = json["profiles"][whoami];
   if (!(myProfile)) {
-  console.error(`Cant find me; ${userid}`);
+  console.error(`Cant find me; ${whoami}`);
   return null;
   }
 
-  myProfile.userid = userid;
+  myProfile.userid = whoami;
   return myProfile;
 }
+export async function getChatByID(chatid: string): Promise<GroupChat | null> {
+  let json;
+  try {
+    json = await getJSON();
+    // console.log("Successfully got json");
+  } catch {
+    // console.error("failed to get json");
+    return null;
+  }
+  var groupChat = json["group-chats"][chatid] as GroupChat;
+  
+  // console.log(groupChat);
+  groupChat.chatid = chatid;
+
+  return groupChat;
+} 
 
 export async function getGroupChatMessages(userid: string, chatid: string): Promise<Message[] | null> {
   console.log(`getGroupChatMessages ${chatid}`);
@@ -82,11 +105,13 @@ export async function getGroupChatMessages(userid: string, chatid: string): Prom
   let json;
   try {
     json = await getJSON();
-    console.log("Successfully got json");
+    // console.log("Successfully got json");
   } catch {
-    console.error("failed to get json");
+    // console.error("failed to get json");
     return null;
   }
+  // var details = json["group-chats"][chatid]["details"] as Details;
+  // console.log(details);
   var groupChat = json["group-chats"][chatid] as GroupChat;
   
   // console.log(groupChat);
@@ -105,7 +130,7 @@ export async function getGroupChatMessages(userid: string, chatid: string): Prom
 //is wasteful. We would want some ChatSummary object which does not have
 //messages.
 
-export async function getMyGroupChats(): Promise<GroupChat[] | null> {
+export async function getMyGroupChats(whoami: string): Promise<GroupChat[] | null> {
   console.log("getmygroupchats");
   let json;
   try {
@@ -115,12 +140,11 @@ export async function getMyGroupChats(): Promise<GroupChat[] | null> {
     console.error("failed to get json");
     return null;
   }
-  const userid = json["whoami"];
-  const groupChatIDS: string[] = json["profiles"][userid]["my-chats"];
+  const groupChatIDS: string[] = json["profiles"][whoami]["my_chats"];
 
   //validate that user has group chats
   if (groupChatIDS.length == 0) {
-    console.error(`user ${userid} has no group chats`);
+    return [];
   }
   
   //validate these group chats exist in DB

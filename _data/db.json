@@ -1,26 +1,29 @@
 {
   "all-data": {
-    "whoami": "userid0",
     "profiles": {
       "userid0": {
         "display_name": "penguinlov3r",
         "profile_picture": "pfp0.jpg",
-        "my-chats": ["chatid0", "chatid1"]
+        "my_chats": ["chatid0", "chatid1", "chatid2"],
+        "chat_color": "#ff80ed"
       },
       "userid1": {
         "display_name": "Sparkle Star",
         "profile_picture": "pfp1.jpg",
-        "my-chats": []
+        "my_chats": [],
+        "chat_color": "#ff0000"
       },
       "userid2": {
         "display_name": "نسبة نسبة نسبة",
         "profile_picture": "pfp2.jpg",
-        "my-chats": ["chatid1"]
+        "my_chats": ["chatid1"],
+        "chat_color": "#ffa500"
       },
         "userid3": {
         "display_name": "dokibirdfan",
         "profile_picture": "pfp0.jpg",
-        "my-chats": ["chatid1"]
+        "my_chats": ["chatid1"],
+        "chat_color": "#065535"
       }
     },
     "group-chats": {
@@ -29,7 +32,14 @@
         "url": "#",
         "owner": "userid0",
         "members": ["userid0", "userid1"],
+        "moderators": ["userid1"],
         "icon": "chat.svg",
+        "details": {
+          "banner-image": "pfp0.jpg",
+          "background-image": "pfp0.jpg",
+          "description": "This is the chat description. ABCDEFGHIJKLMNOP",
+          "rules": [["No bullying/harassment", "Please do not harass or bully another member.  This chat is a safe place for everyone. Additionally, the usage of slurs is not allowed. Breaking this rule results in a kick."],["No venting or drama","Although venting can be good for you, please don’t do that here. Additionally, drama isn’t welcome here and we ask that you take it somewhere else as it can make other members uncomfortable. Breaking this rule will result in a warning first, but could lead to a kick if it continues to be a problem."]]
+        },
         "messages": {
           "msgid0": {
             "userid": "userid0",
@@ -52,8 +62,16 @@
         "title": "Hololive Fan Club",
         "url": "#",
         "owner": "userid0",
-        "members": ["userid0", "userid1"],
+        "members": ["userid0", "userid1", "userid2"],
         "icon": "chat.svg",
+        "moderators": ["userid0"],
+        "details": {
+          "banner-image": "pfp0.jpg",
+          "background-image": "pfp0.jpg",
+          "description": "This is the chat description. ABCDEFGHIJKLMNOP",
+          "rules": [["No bullying/harassment", "Please do not harass or bully another member.  This chat is a safe place for everyone. Additionally, the usage of slurs is not allowed. Breaking this rule results in a kick."],["No venting or drama","Although venting can be good for you, please don’t do that here. Additionally, drama isn’t welcome here and we ask that you take it somewhere else as it can make other members uncomfortable. Breaking this rule will result in a warning first, but could lead to a kick if it continues to be a problem."]]
+        },
+        
         "messages": {
           "msgid0": {
             "userid": "userid0",
@@ -64,6 +82,32 @@
             "userid": "userid1",
             "timestamp": "2025-06-17T12:01:00Z",
             "text": "Nice to meet you penguinlov3r, I am Sparkle Star!"
+          }
+        }
+      },
+      "chatid2": {
+        "title": "AAAHHH IM SO LONGG AHHH AHAHAH AHAHHA WIDJAWIOJDAOIJWDOIAJWDO",
+        "url": "#",
+        "owner": "userid0",
+        "members": ["userid0", "userid2", "userid3"],
+        "icon": "chat.svg",
+        "moderators": ["userid0"],
+        "details": {
+          "banner-image": "pfp0.jpg",
+          "background-image": "pfp0.jpg",
+          "description": "This is the chat description. ABCDEFGHIJKLMNOP",
+          "rules": [["No bullying/harassment", "Please do not harass or bully another member.  This chat is a safe place for everyone. Additionally, the usage of slurs is not allowed. Breaking this rule results in a kick."],["No venting or drama","Although venting can be good for you, please don’t do that here. Additionally, drama isn’t welcome here and we ask that you take it somewhere else as it can make other members uncomfortable. Breaking this rule will result in a warning first, but could lead to a kick if it continues to be a problem."]]
+        },
+        "messages": {
+          "msgid0": {
+            "userid": "userid2",
+            "timestamp": "2025-06-17T12:00:00Z",
+            "text": "Lorem Ipsum incoming"
+          },
+          "msgid1": {
+            "userid": "userid3",
+            "timestamp": "2025-06-17T12:01:00Z",
+            "text": "ss Lorem ipsum dolor sit amet. Et sint quia est atque vitae cum voluptatum voluptatem aut itaque esse. Ea omnis voluptatem et eligendi earum vel magni odit aut molestiae odit. Ut dolor velit vel eius voluptate qui quis eligendi. Ea voluptatibus aspernatur id quasi autem sed quia perspiciatis. Vel expedita voluptas est vitae rerum ea excepturi repudiandae in quia quisquam ea consequatur consequatur nam nihil asperiores. Rem itaque quam aut neque esse qui natus magni sed laboriosam consequatur. Non quae fugit aut dolorem animi qui sapiente facilis quo sunt voluptatum. Non officiis rerum est consectetur quae sit nesciunt consectetur rem recusandae laudantium. Hic doloremque impedit sit soluta quia sit dolorem facilis hic alias velit id dolor minus. Ut Quis dicta non asperiores reprehenderit ut quasi pariatur sed maxime debitis."          
           }
         }
       }

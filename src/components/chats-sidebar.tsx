@@ -16,11 +16,11 @@ import {
 import { ChatsSidebarClientBoundary } from "./chats-sidebar-client-boundary";
 
 // THIS IS A SERVER COMPONENT, NO USEEFFECT OR USE STATE
-export async function ChatsSidebar({chats, me}: {chats: GroupChat[] | null, me: Profile | null}) {
+export async function ChatsSidebar({chats, me, currid}: {chats: GroupChat[] | null, me: Profile | null, currid: string}) {
   console.log("ChatsSidebar", chats);
   if (!chats) {
-    console.error("Chats Sidebar was called with null!");
-    chats = [];
+    console.error("chats is null in ChatsSidebar");
+    return <></>;
   }
 
   return (
@@ -31,7 +31,7 @@ export async function ChatsSidebar({chats, me}: {chats: GroupChat[] | null, me: 
           <SidebarGroupLabel>My Chats</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <ChatsSidebarClientBoundary chats={chats}/>
+              {chats.length > 0 ? <ChatsSidebarClientBoundary props={chats} currID={currid}/> : <h1>You have no chats!</h1>}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -41,7 +41,9 @@ export async function ChatsSidebar({chats, me}: {chats: GroupChat[] | null, me: 
   );
 
   async function createSidebarFooter(me: Profile | null) {
-  if (!me) {
+  
+  
+    if (!me) {
     return (
       <SidebarFooter>
       <div className="flex gap-x-5 items-center">
@@ -51,6 +53,7 @@ export async function ChatsSidebar({chats, me}: {chats: GroupChat[] | null, me: 
           <h4>Userid Not Found!</h4>
         </div>
       </div>
+      
     </SidebarFooter>
     )
   }

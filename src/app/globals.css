@@ -45,9 +45,9 @@
 
 :root {
   --radius: 0.65rem;
-  --background: oklch(1 0 0);
+  --background: oklch(0% 0 0);
   --foreground: oklch(0.141 0.005 285.823);
-  --card: oklch(1 0 0);
+  --card: oklch(8.467% 0.00001 271.152);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
@@ -68,14 +68,35 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
+  
+  
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.606 0.25 292.717);
-  --sidebar-primary-foreground: oklch(0.969 0.016 293.756);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.606 0.25 292.717);
+
+  /* My custom properties */
+  /* CHAT */
+  /* these currently do NOTHING; components/chatmessage.tsx for more details*/
+  --chat-bubble-notme-opacity-color : #bab4b4;
+  --chat-bubble-notme-opacity-amount : 0.8;
+
+  /* MESSAGE */
+  --chat-message-displayname-text-color: #ffffff;
+  --chat-message-text-color: #ffffff;
+
+  /* SEND MESSAGE BOX*/
+  --send-message-text-color: oklch(0.7749 0.0068 17.3);
+
+  /* the background is simply */
+
+  /* LEFT SIDEBAR */
+  --sidebar-btn-selected-bg: oklch(0.606 0.25 292.717);
+  --sidebar-btn-selected-bg-hover: oklch(72.359% 0.2578 334.532);
+  --sidebar-btn-selected-text: var(--background);
+  --sidebar-btn-selected-text-hover: var(--background);
+
+  --sidebar-btn-default-bg: oklch(100% 0.00011 271.152);
+  --sidebar-btn-default-bg-hover: oklch(62.006% 0.00007 271.152 / 0.286);
+  --sidebar-btn-default-text: var(--foreground);
+  --sidebar-btn-default-text-hover: var(--foreground);
 }
 
 .dark {
