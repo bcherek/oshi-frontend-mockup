@@ -26,13 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-screen">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
       >
         <SidebarProvider>
           <ChatProvider>
-            <main className="flex-1 flex flex-col flex-grow h-full">{children}</main>
+            <main className="flex h-full w-full">{children}</main>
           </ChatProvider>
         </SidebarProvider>
       </body>

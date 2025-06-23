@@ -142,3 +142,7 @@
     @apply bg-background text-foreground;
   }
 }
+/* random junk to try to fix scroll */
+html, body, #__next {
+  height: 100%;
+}

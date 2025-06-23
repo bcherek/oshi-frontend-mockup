@@ -66,7 +66,7 @@
         "icon": "chat.svg",
         "moderators": ["userid0"],
         "details": {
-          "banner-image": "pfp0.jpg",
+          "banner-image": "banner0.png",
           "background-image": "pfp0.jpg",
           "description": "This is the chat description. ABCDEFGHIJKLMNOP",
           "rules": [["No bullying/harassment", "Please do not harass or bully another member.  This chat is a safe place for everyone. Additionally, the usage of slurs is not allowed. Breaking this rule results in a kick."],["No venting or drama","Although venting can be good for you, please don’t do that here. Additionally, drama isn’t welcome here and we ask that you take it somewhere else as it can make other members uncomfortable. Breaking this rule will result in a warning first, but could lead to a kick if it continues to be a problem."]]
@@ -107,6 +107,26 @@
           "msgid1": {
             "userid": "userid3",
             "timestamp": "2025-06-17T12:01:00Z",
+            "text": "ss Lorem ipsum dolor sit amet. Et sint quia est atque vitae cum voluptatum voluptatem aut itaque esse. Ea omnis voluptatem et eligendi earum vel magni odit aut molestiae odit. Ut dolor velit vel eius voluptate qui quis eligendi. Ea voluptatibus aspernatur id quasi autem sed quia perspiciatis. Vel expedita voluptas est vitae rerum ea excepturi repudiandae in quia quisquam ea consequatur consequatur nam nihil asperiores. Rem itaque quam aut neque esse qui natus magni sed laboriosam consequatur. Non quae fugit aut dolorem animi qui sapiente facilis quo sunt voluptatum. Non officiis rerum est consectetur quae sit nesciunt consectetur rem recusandae laudantium. Hic doloremque impedit sit soluta quia sit dolorem facilis hic alias velit id dolor minus. Ut Quis dicta non asperiores reprehenderit ut quasi pariatur sed maxime debitis."          
+          },
+          "msgid3": {
+            "userid": "userid2",
+            "timestamp": "2025-06-17T12:02:00Z",
+            "text": "more"
+          },
+          "msgid4": {
+            "userid": "userid3",
+            "timestamp": "2025-06-17T12:03:00Z",
+            "text": "ss Lorem ipsum dolor sit amet. Et sint quia est atque vitae cum voluptatum voluptatem aut itaque esse. Ea omnis voluptatem et eligendi earum vel magni odit aut molestiae odit. Ut dolor velit vel eius voluptate qui quis eligendi. Ea voluptatibus aspernatur id quasi autem sed quia perspiciatis. Vel expedita voluptas est vitae rerum ea excepturi repudiandae in quia quisquam ea consequatur consequatur nam nihil asperiores. Rem itaque quam aut neque esse qui natus magni sed laboriosam consequatur. Non quae fugit aut dolorem animi qui sapiente facilis quo sunt voluptatum. Non officiis rerum est consectetur quae sit nesciunt consectetur rem recusandae laudantium. Hic doloremque impedit sit soluta quia sit dolorem facilis hic alias velit id dolor minus. Ut Quis dicta non asperiores reprehenderit ut quasi pariatur sed maxime debitis."          
+          },
+          "msgid5": {
+            "userid": "userid2",
+            "timestamp": "2025-06-17T12:08:00Z",
+            "text": "more?"
+          },
+          "msgid6": {
+            "userid": "userid3",
+            "timestamp": "2025-06-17T12:10:00Z",
             "text": "ss Lorem ipsum dolor sit amet. Et sint quia est atque vitae cum voluptatum voluptatem aut itaque esse. Ea omnis voluptatem et eligendi earum vel magni odit aut molestiae odit. Ut dolor velit vel eius voluptate qui quis eligendi. Ea voluptatibus aspernatur id quasi autem sed quia perspiciatis. Vel expedita voluptas est vitae rerum ea excepturi repudiandae in quia quisquam ea consequatur consequatur nam nihil asperiores. Rem itaque quam aut neque esse qui natus magni sed laboriosam consequatur. Non quae fugit aut dolorem animi qui sapiente facilis quo sunt voluptatum. Non officiis rerum est consectetur quae sit nesciunt consectetur rem recusandae laudantium. Hic doloremque impedit sit soluta quia sit dolorem facilis hic alias velit id dolor minus. Ut Quis dicta non asperiores reprehenderit ut quasi pariatur sed maxime debitis."          
           }
         }

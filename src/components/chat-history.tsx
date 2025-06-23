@@ -10,11 +10,11 @@ export function ChatHistory(props : {chatHistory : Message[] | null, myuserid: s
   }
 
   return (
-    <ScrollArea className="flex flex-col h-max">
-      {props.chatHistory.map((message, index) => (
+    <>
+        {props.chatHistory.map((message, index) => (
         <ChatMessage key={index} msg={message} isMe={props.myuserid === message.userid}/>
       ))}
-      <ScrollBar orientation="vertical" />
-    </ScrollArea>
+    </>
+
   );
 }

@@ -1,39 +1,56 @@
 import { Chat } from "@/components/chat";
 import { ChatsSidebar } from "@/components/chats-sidebar";
-import { getChatByID, getGroupChatMessages, getMe, getMyGroupChats, GroupChat } from "@/api/get-from-database";
+import {
+  getChatByID,
+  getGroupChatMessages,
+  getMe,
+  getMyGroupChats,
+  GroupChat,
+} from "@/api/get-from-database";
 import { Message } from "@/api/get-from-database";
-import { getChatContext } from  "@/context/ChatContext";
-import { redirect } from "next/navigation";
 import { ChatDescriptionSidebar } from "@/components/chat-description-sidebar";
-
+import { TopBanner } from "@/components/chat-banner";
+import { ChatInput } from "@/components/chat-input";
+import { ScrollBar, ScrollArea } from "@/components/ui/scroll-area";
 type PageProps = {
-  params: { userid: string, chatid: string };
+  params: { userid: string; chatid: string };
 };
 
 export default async function Home({ params }: PageProps) {
-  //@ts-ignore ts(80007) - Params is a Dynamic API and needs an await https://nextjs.org/docs/messages/sync-dynamic-apis 
+  //@ts-ignore ts(80007) - Params is a Dynamic API and needs an await https://nextjs.org/docs/messages/sync-dynamic-apis
   const { userid, chatid } = await params;
-
 
   console.log("page.tsx");
 
   const chats = await getMyGroupChats(userid);
   const me = await getMe(userid);
-  
-  let chat : GroupChat | null = null;
-  let chatHistory : Message[] | null = null;
+
+  let chat: GroupChat | null = null;
+  let chatHistory: Message[] | null = null;
 
   if (me && chats) {
-    chatHistory = await getGroupChatMessages(userid,chatid);
+    chatHistory = await getGroupChatMessages(userid, chatid);
     chat = await getChatByID(chatid);
   }
 
   console.log("chats", chats);
   return (
-        <div className="flex flex-grow">
-          <ChatsSidebar chats={chats} me={me} currid={chatid}/>
-          <Chat chatHistory={chatHistory} myuserid={me ? me.userid : null}/>
-          <ChatDescriptionSidebar chat={chat} me={me}/>
+    <div className="flex flex-grow h-screen">
+      <ChatsSidebar chats={chats} me={me} currid={chatid} />
+
+      <div className="flex flex-col w-full flex-grow min-h-0">
+        <div className="flex-none">
+          <TopBanner groupChat={chat} />
         </div>
+
+        <div className="flex-grow overflow-y-auto min-h-0">
+          <Chat chatHistory={chatHistory} myuserid={me ? me.userid : null} />
+        </div>
+        <div className="flex-none">
+          <ChatInput />
+        </div>
+      </div>
+      <ChatDescriptionSidebar chat={chat} me={me} />
+    </div>
   );
 }

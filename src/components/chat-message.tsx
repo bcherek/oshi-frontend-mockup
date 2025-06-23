@@ -18,7 +18,7 @@ export async function ChatMessage(props: { msg: Message; isMe: boolean }) {
           </div>
         </div>
         <h4
-          className="rounded-lg text-[var(--chat-message-text-color)] p-4"
+          className="rounded-lg text-[var(--chat-message-text-color)] p-4 m-4"
           style={{
             backgroundColor: props.isMe
               ? profile.chat_color
