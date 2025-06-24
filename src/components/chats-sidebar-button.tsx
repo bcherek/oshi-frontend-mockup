@@ -1,9 +1,6 @@
 "use client";
-import { redirect } from "next/dist/server/api-utils";
 import { SidebarMenuItem, SidebarMenuButton } from "./ui/sidebar";
-import { getChatContext } from "@/context/ChatContext";
 import { useRouter } from "next/navigation";
-import { Button } from "./ui/button";
 
 export function ChatSidebarButton(groupChat: {
   title: string;

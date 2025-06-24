@@ -99,8 +99,7 @@
   --sidebar-btn-default-text-hover: #ffffff;
 
   /* BORDER COLORS */
-  --my-message-border: linear-gradient(90deg, #6ACDE4 0%, #4B30B3 100%);
-  --their-message-border: linear-gradient(90deg, #9F2525 0%, #D36464 100%);
+  /* Controlled by theme.ts */
 }
 
 .dark {
@@ -143,12 +142,7 @@
   border: 4px solid transparent;
 }
 
-.btn-gradient-2 {
-  background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)) padding-box,
-              linear-gradient(to right, darkblue, darkorchid) border-box;
-  border-radius: 50em;
-  border: 4px solid transparent;
-}
+
 
 
 @layer base {
