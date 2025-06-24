@@ -1,6 +1,5 @@
 import { Message, getProfile, Profile } from "@/api/get-from-database";
 export async function ChatMessage(props: { msg: Message; isMe: boolean }) {
-
   var profile = (await getProfile(props.msg.userid)) ?? null;
   if (!profile) {
     return <></>;
@@ -14,16 +13,30 @@ export async function ChatMessage(props: { msg: Message; isMe: boolean }) {
             className="w-10 h-10"
           />
           <div>
-            <h3 className="text-[var(--chat-message-displayname-text-color)]">{profile.display_name}</h3>
+            <h3 className="text-[var(--chat-message-displayname-text-color)]">
+              {profile.display_name}
+            </h3>
           </div>
         </div>
         <h4
-          className="rounded-lg text-[var(--chat-message-text-color)] p-4 m-4"
-          style={{
-            backgroundColor: props.isMe
-              ? profile.chat_color
-              : addOpacity(profile.chat_color, getChatOpacityColor(), getChatOpacityAmount()),
-          }}
+          className={
+            props.isMe
+              ? "m-4 p-4 text-black btn-gradient-2"
+              : "rounded-lg text-[var(--chat-message-text-color)] p-4 m-4 border-4"
+          }
+          style={
+            props.isMe
+              ? {
+                  backgroundColor: profile.chat_color,
+                }
+              : {
+                  backgroundColor: addOpacity(
+                    profile.chat_color,
+                    getChatOpacityColor(),
+                    getChatOpacityAmount()
+                  ),
+                }
+          }
         >
           {props.msg.text}
         </h4>
@@ -33,7 +46,7 @@ export async function ChatMessage(props: { msg: Message; isMe: boolean }) {
 }
 
 //Unfortunately, we can't pull these static values from globals.css because globals.css is only accessible via
-//the client or via CSS. We would need to make a theme.ts file. 
+//the client or via CSS. We would need to make a theme.ts file.
 function getChatOpacityColor(): string {
   // SHOULD BE SET TO --chat-opacity-color
   return "#000000";
@@ -43,7 +56,6 @@ function getChatOpacityAmount(): number {
   // SHOULD BE SET TO --chat-opacity-amount
   return 0.8;
 }
-
 
 //We want to change the opacity of the backgroundColor dependent on whether or not we are the user.
 //I tried using a z-index for this but for some reason that just refuses to work.

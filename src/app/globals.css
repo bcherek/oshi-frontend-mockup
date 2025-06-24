@@ -74,7 +74,7 @@
 
   /* My custom properties */
   /* CHAT */
-  /* these currently do NOTHING; components/chatmessage.tsx for more details*/
+  /* these currently do NOTHING; components/chat-message.tsx for more details*/
   --chat-bubble-notme-opacity-color : #bab4b4;
   --chat-bubble-notme-opacity-amount : 0.8;
 
@@ -87,16 +87,20 @@
 
   /* the background is simply */
 
-  /* LEFT SIDEBAR */
+  /* CHATS SIDEBAR (LEFT SIDE)*/
   --sidebar-btn-selected-bg: oklch(0.606 0.25 292.717);
   --sidebar-btn-selected-bg-hover: oklch(72.359% 0.2578 334.532);
-  --sidebar-btn-selected-text: var(--background);
-  --sidebar-btn-selected-text-hover: var(--background);
+  --sidebar-btn-selected-text: #ffffff;
+  --sidebar-btn-selected-text-hover: #ffffff;
 
   --sidebar-btn-default-bg: oklch(100% 0.00011 271.152);
   --sidebar-btn-default-bg-hover: oklch(62.006% 0.00007 271.152 / 0.286);
-  --sidebar-btn-default-text: var(--foreground);
-  --sidebar-btn-default-text-hover: var(--foreground);
+  --sidebar-btn-default-text: #ffffff;
+  --sidebar-btn-default-text-hover: #ffffff;
+
+  /* BORDER COLORS */
+  --my-message-border: linear-gradient(90deg, #6ACDE4 0%, #4B30B3 100%);
+  --their-message-border: linear-gradient(90deg, #9F2525 0%, #D36464 100%);
 }
 
 .dark {
@@ -131,6 +135,19 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.541 0.281 293.009);
+}
+
+.my-message-border-gradient {
+  background: var(--my-message-border);
+  /* border-radius: 50em; */
+  border: 4px solid transparent;
+}
+
+.btn-gradient-2 {
+  background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)) padding-box,
+              linear-gradient(to right, darkblue, darkorchid) border-box;
+  border-radius: 50em;
+  border: 4px solid transparent;
 }
 
 

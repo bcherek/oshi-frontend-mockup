@@ -31,7 +31,7 @@ export async function ChatsSidebar({chats, me, currid}: {chats: GroupChat[] | nu
           <SidebarGroupLabel>My Chats</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {chats.length > 0 ? <ChatsSidebarClientBoundary props={chats} currID={currid}/> : <h1>You have no chats!</h1>}
+              {chats.length > 0 ? <ChatsSidebarClientBoundary groupChats={chats} currID={currid}/> : <h1>You have no chats!</h1>}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
