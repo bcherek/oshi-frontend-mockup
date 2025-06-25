@@ -1,6 +1,8 @@
 import { Message, getProfile, Profile } from "@/api/get-from-database";
 import theme from "@/theme";
 export async function ChatMessage(props: { msg: Message; isMe: boolean }) {
+  
+  
   var profile = (await getProfile(props.msg.userid)) ?? null;
 
   if (!profile) {
@@ -8,8 +10,7 @@ export async function ChatMessage(props: { msg: Message; isMe: boolean }) {
   }
   const myGradientBoxStyle = theme.getMyGradientBox(profile.chat_color);
   const theirGradientBoxStyle = theme.getOtherGradientBox(
-    addOpacity(
-      profile.chat_color,
+    addOpacity(profile.chat_color,
       theme.colors.chatOpacityColor,
       theme.colors.chatOpacityAmount
     )
@@ -29,20 +30,14 @@ export async function ChatMessage(props: { msg: Message; isMe: boolean }) {
             </h3>
           </div>
         </div>
-              {/* borderRadius: "50em",
-      border: "4px solid transparent", */}
         {/* CHAT BUBBLE */}
-        <div className="m-3 inline-block overflow-hidden rounded-[50em] b-4 border-opacity-0" style={props.isMe ? myGradientBoxStyle : theirGradientBoxStyle} >
-          {/* CHAT TEXT */}
-          <h4
-          className={
-            props.isMe
-              ? "m-2 p-2 text-[var(--chat-message-text-color)]"
-              : "m-2 p-2 text-[var(--chat-message-text-color)]"
-          }
+        <div
+          className="m-3 inline-block border-opacity-0 box-border p-1"
+          style={props.isMe ? myGradientBoxStyle : theirGradientBoxStyle}
         >
-          {props.msg.text}
-        </h4>
+          <h4 className="px-8 py-4 text-[var(--chat-message-text-color)] break-words whitespace-pre-wrap">
+            {props.msg.text}
+          </h4>
         </div>
       </div>
     </div>

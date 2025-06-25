@@ -24,6 +24,8 @@ const theme: Theme = {
         linear-gradient(${myColor}, ${myColor}) padding-box,
         linear-gradient(90deg, #6ACDE4 0%, #4B30B3 100%) border-box
       `,
+      borderRadius: "3em",
+      border: "4px solid transparent",
     }
   },
 getOtherGradientBox(otherColor) {
@@ -32,7 +34,7 @@ getOtherGradientBox(otherColor) {
         linear-gradient(${otherColor}, ${otherColor}) padding-box,
         linear-gradient(90deg, #9F2525 0%, #D36464 100%) border-box
       `,
-      borderRadius: "50em",
+      borderRadius: "3em",
       border: "4px solid transparent",
     }
   },

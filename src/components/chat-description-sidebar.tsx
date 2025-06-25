@@ -25,9 +25,9 @@ export async function ChatDescriptionSidebar({
     console.error("trying to get description of an empty chat");
     return <></>;
   }
-
+  console.log(`bg image path: ${chat.details["background-image"]}`);
   return (
-    <Sidebar side="right">
+    <Sidebar side="right" variant="chatdescription" pathToBGImage={chat.details["background-image"]}>
       <SidebarHeader> {chat.title} </SidebarHeader>
       <SidebarContent className="flex">
         {displayRules(chat)}
@@ -90,17 +90,16 @@ export async function ChatDescriptionSidebar({
     //In the future, this can be refactored to use the SidebarMenuButton to make the rules editable
     return (
       <>
-      <SidebarGroup>
-        <SidebarGroupContent>
-          {chat.details.description}
-        </SidebarGroupContent>
-      </SidebarGroup>
+      {/* <SidebarGroup>
+        Can use other groups if description should be kept separate
+      </SidebarGroup> */}
       <SidebarGroup>
         <SidebarGroupContent>
           <SidebarMenu>
-            {chat.details.rules.map((rule) => (
+            <HeaderBubble header="description" body={chat.details.description}/>
+            {chat.details.rules.map((rule, index) => (
               <HeaderBubble
-                key={rule[0] + rule[1]}
+                key={index}
                 header={rule[0]}
                 body={rule[1]}
               />

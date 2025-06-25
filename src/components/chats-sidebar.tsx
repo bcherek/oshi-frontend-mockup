@@ -24,7 +24,7 @@ export async function ChatsSidebar({chats, me, currid}: {chats: GroupChat[] | nu
   }
 
   return (
-    <Sidebar>
+    <Sidebar variant="chatlist">
       <SidebarHeader>Find or start a conversation</SidebarHeader>
       <SidebarContent className="flex justify-between">
         <SidebarGroup>

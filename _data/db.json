@@ -36,7 +36,7 @@
         "icon": "chat.svg",
         "details": {
           "banner-image": "pfp0.jpg",
-          "background-image": "pfp0.jpg",
+          "background-image": "background0.jpg",
           "description": "This is the chat description. ABCDEFGHIJKLMNOP",
           "rules": [["No bullying/harassment", "Please do not harass or bully another member.  This chat is a safe place for everyone. Additionally, the usage of slurs is not allowed. Breaking this rule results in a kick."],["No venting or drama","Although venting can be good for you, please don’t do that here. Additionally, drama isn’t welcome here and we ask that you take it somewhere else as it can make other members uncomfortable. Breaking this rule will result in a warning first, but could lead to a kick if it continues to be a problem."]]
         },
