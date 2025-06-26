@@ -1,5 +1,6 @@
-import { Message, getProfile, Profile } from "@/api/get-from-database";
+import { Message, getProfile } from "@/api/get-from-database";
 import theme from "@/theme";
+import { ProfilePicture } from "../profile-picture";
 export async function ChatMessage(props: { msg: Message; isMe: boolean }) {
   
   
@@ -20,10 +21,7 @@ export async function ChatMessage(props: { msg: Message; isMe: boolean }) {
       <div className="inline-block p-3">
         {/* PFP AND NAME */}
         <div className="flex gap-x-5 items-center">
-          <img
-            src={`/assets/${profile.profile_picture}`}
-            className="w-10 h-10"
-          />
+          <ProfilePicture realimagepath={`/assets/${profile.profile_picture}`}/>
           <div>
             <h3 className="text-[var(--chat-message-displayname-text-color)]">
               {profile.display_name}

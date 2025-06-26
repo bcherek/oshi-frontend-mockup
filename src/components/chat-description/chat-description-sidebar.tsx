@@ -5,12 +5,11 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
-  SidebarMenu,
+  SidebarMenu
 } from "@/components/ui/sidebar";
 
-import { Bubble, HeaderBubble } from "@/components/description-bubble";
+import { HeaderBubble } from "@/components/chat-description/description-bubble";
 
 // THIS IS A SERVER COMPONENT, NO USEEFFECT OR USE STATE
 export async function ChatDescriptionSidebar({
@@ -20,14 +19,16 @@ export async function ChatDescriptionSidebar({
   chat: GroupChat | null;
   me: Profile | null;
 }) {
-  console.log("ChatDescriptionSidebar", chat);
+  // console.log("ChatDescriptionSidebar", chat);
   if (!chat) {
     console.error("trying to get description of an empty chat");
     return <></>;
   }
-  console.log(`bg image path: ${chat.details["background-image"]}`);
+
+  const bgImage = `/assets/${chat.details["background_image"]}`;
+  console.log(`bg image: ${bgImage}` );
   return (
-    <Sidebar side="right" variant="chatdescription" pathToBGImage={chat.details["background-image"]}>
+    <Sidebar side="right" variant="chatdescription" pathtobgimage={bgImage}>
       <SidebarHeader> {chat.title} </SidebarHeader>
       <SidebarContent className="flex">
         {displayRules(chat)}

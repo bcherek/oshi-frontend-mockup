@@ -1,6 +1,7 @@
-import { Chat } from "@/components/chat";
-import { ChatsSidebar } from "@/components/chats-sidebar";
+import { Chat } from "@/components/chat/chat";
+import { ChatsSidebar } from "@/components/other-chats/chats-sidebar";
 import {
+  getAllChatListInfos,
   getChatByID,
   getGroupChatMessages,
   getMe,
@@ -8,9 +9,9 @@ import {
   GroupChat,
 } from "@/api/get-from-database";
 import { Message } from "@/api/get-from-database";
-import { ChatDescriptionSidebar } from "@/components/chat-description-sidebar";
-import { TopBanner } from "@/components/chat-banner";
-import { ChatInput } from "@/components/chat-input";
+import { ChatDescriptionSidebar } from "@/components/chat-description/chat-description-sidebar";
+import { TopBanner } from "@/components/chat/chat-banner";
+import { ChatInput } from "@/components/chat/chat-input";
 import { ScrollBar, ScrollArea } from "@/components/ui/scroll-area";
 type PageProps = {
   params: { userid: string; chatid: string };
@@ -22,21 +23,28 @@ export default async function Home({ params }: PageProps) {
 
   console.log("page.tsx");
 
-  const chats = await getMyGroupChats(userid);
+  // let chatListInfos;
+  // if (userid) {
+  //   console.log("userid in page.tsx", userid);
+  var chatListInfos = await getAllChatListInfos(userid); 
+  // }
   const me = await getMe(userid);
 
   let chat: GroupChat | null = null;
   let chatHistory: Message[] | null = null;
 
-  if (me && chats) {
+  if (me && chatListInfos) {
     chatHistory = await getGroupChatMessages(userid, chatid);
     chat = await getChatByID(chatid);
   }
+  else {
+    return;
+  }
 
-  console.log("chats", chats);
+  // console.log("chats", chats);
   return (
     <div className="flex flex-grow h-screen">
-      <ChatsSidebar chats={chats} me={me} currid={chatid} />
+      <ChatsSidebar chatListInfos={chatListInfos} me={me} currid={chatid} />
 
       <div className="flex flex-col w-full flex-grow min-h-0">
         <div className="flex-none">

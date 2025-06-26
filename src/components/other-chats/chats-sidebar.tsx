@@ -1,4 +1,5 @@
 import {
+  ChatListInfo,
   GroupChat,
   Profile
 } from "@/api/get-from-database";
@@ -13,12 +14,12 @@ import {
   SidebarMenu
 } from "@/components/ui/sidebar";
 
-import { ChatsSidebarClientBoundary } from "./chats-sidebar-client-boundary";
+import { ChatsSidebarClientBoundary } from "../chat-description/chats-sidebar-client-boundary";
 
 // THIS IS A SERVER COMPONENT, NO USEEFFECT OR USE STATE
-export async function ChatsSidebar({chats, me, currid}: {chats: GroupChat[] | null, me: Profile | null, currid: string}) {
-  console.log("ChatsSidebar", chats);
-  if (!chats) {
+export async function ChatsSidebar({chatListInfos, me, currid}: {chatListInfos: ChatListInfo[] | null, me: Profile | null, currid: string}) {
+  console.log("ChatsSidebar", chatListInfos);
+  if (!chatListInfos) {
     console.error("chats is null in ChatsSidebar");
     return <></>;
   }
@@ -30,8 +31,8 @@ export async function ChatsSidebar({chats, me, currid}: {chats: GroupChat[] | nu
         <SidebarGroup>
           <SidebarGroupLabel>My Chats</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {chats.length > 0 ? <ChatsSidebarClientBoundary groupChats={chats} currID={currid}/> : <h1>You have no chats!</h1>}
+            <SidebarMenu key={3}>
+              {chatListInfos.length > 0 ? <ChatsSidebarClientBoundary chatListInfos={chatListInfos} key={1} currID={currid}/> : <h1>You have no chats!</h1>}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

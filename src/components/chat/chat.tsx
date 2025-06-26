@@ -1,8 +1,5 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { ChatInput } from "@/components/chat-input";
 import { Message } from "@/api/get-from-database";
-import { ChatHistory } from "@/components/chat-history";
-import { getChatContext } from "@/context/ChatContext";
+import { ChatHistory } from "@/components/chat/chat-history";
 
 export async function Chat(props : {chatHistory : Message[] | null, myuserid : string | null}) {
   console.log("chat function");

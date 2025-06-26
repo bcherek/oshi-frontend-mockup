@@ -162,8 +162,8 @@ function Sidebar({
   side?: "left" | "right";
   variant?: "chatlist" | "chatdescription" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";
-  // my own custom property
-  pathToBGImage?: string;
+  // my own custom property; needs to be full lowercase 
+  pathtobgimage?: string;
 }) {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 
@@ -172,17 +172,19 @@ function Sidebar({
   const variantBg = {
     chatlist: "bg-[var(--sidebar-chats-bg)]",
     chatdescription: "bg-[var(--sidebar-description-bg)]",
-    inset: "",
+    inset: "bg-red-500",
   };
   // This is some pretty stupid Javascript but it works (converts falsy value to true and then false)
-  var hasBGImage: boolean = !!props.pathToBGImage;
+  var hasBGImage: boolean = !!props.pathtobgimage;
+  console.log(`hasBGImage : ${hasBGImage}`);
 
+  //NOT TESTED
   if (collapsible === "none") {
     return (
       <div
         data-slot="sidebar"
         className={cn(
-          "bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col",
+          variantBg[variant] || "bg-sidebar", "text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col",
           className
         )}
         {...props}
@@ -190,9 +192,9 @@ function Sidebar({
         style={
           hasBGImage
             ? {
-                backgroundImage: `url(/assets/${props.pathToBGImage})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                backgroundImage: `url(${props.pathtobgimage})`,
+                // backgroundSize: "cover",
+                // backgroundPosition: "center",
               }
             : undefined
         }
@@ -202,6 +204,7 @@ function Sidebar({
     );
   }
 
+  // NOT TESTED
   if (isMobile) {
     return (
       <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
@@ -230,6 +233,7 @@ function Sidebar({
     );
   }
 
+  //This is the return that is triggering in my environment
   return (
     <div
       className="group peer text-sidebar-foreground hidden md:block"
@@ -246,9 +250,9 @@ function Sidebar({
           "relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear",
           "group-data-[collapsible=offcanvas]:w-0",
           "group-data-[side=right]:rotate-180",
-          variant === "floating" || variant === "inset"
-            ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]"
-            : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
+          // variant === "floating" || variant === "inset"
+          //   ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]"
+          //   : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
         )}
       />
       <div
@@ -260,12 +264,22 @@ function Sidebar({
             ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
             : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
           // Adjust the padding for floating and inset variants.
-          variant === "floating" || variant === "inset"
-            ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]"
-            : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l",
+          // variant === "inset" || variant === "inset"
+          //   ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]"
+          //   : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l",
           className
         )}
         {...props}
+        // Have to use style here I think
+        style={
+          hasBGImage
+            ? {
+                backgroundImage:`var(--gradient-over-chat-sidebar), url(${props.pathtobgimage})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }
+            : undefined
+        }
       >
         <div
           data-sidebar="sidebar"
@@ -415,7 +429,7 @@ function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="sidebar-group"
       data-sidebar="group"
-      className={cn("relative flex w-full min-w-0 flex-col p-2", className)}
+      className={cn("relative flex w-full min-w-0 flex-col", className)}
       {...props}
     />
   );
@@ -502,7 +516,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const sidebarMenuButtonVariants = cva(
-  "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
+  "peer/menu-button flex w-full h-15 items-center gap-2 overflow-hidden text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
   {
     variants: {
       variant: {

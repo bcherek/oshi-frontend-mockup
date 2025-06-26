@@ -1,6 +1,5 @@
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { getGroupChatMessages, Message } from "@/api/get-from-database";
-import { ChatMessage } from "./chat-message";
+import { ChatMessage } from "@/components/chat/chat-message";
+import { Message } from "@/api/get-from-database";
 
 export function ChatHistory(props : {chatHistory : Message[] | null, myuserid: string | null}) {
   console.log("ChatHistory component");

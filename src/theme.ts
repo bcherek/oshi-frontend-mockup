@@ -4,11 +4,14 @@
 
 export interface Theme {
   colors: {
-    chatOpacityColor: string
-    chatOpacityAmount: number
-  }
-  getMyGradientBox: (myColor: string) => React.CSSProperties,
-  getOtherGradientBox: (myColor: string) => React.CSSProperties
+    chatOpacityColor: string;
+    chatOpacityAmount: number;
+  };
+  getMyGradientBox: (myColor?: string, border?: string) => React.CSSProperties;
+  getOtherGradientBox: (
+    myColor?: string,
+    border?: string
+  ) => React.CSSProperties;
 }
 
 const theme: Theme = {
@@ -16,29 +19,28 @@ const theme: Theme = {
     chatOpacityColor: "#000000",
     chatOpacityAmount: 0.8,
   },
-    
+
   // gradient boxes stolen from https://codyhouse.co/nuggets/css-gradient-borders
-  getMyGradientBox(myColor) {
+  getMyGradientBox(myColor = "#00000000", border = "4px") {
     return {
       background: `
         linear-gradient(${myColor}, ${myColor}) padding-box,
-        linear-gradient(90deg, #6ACDE4 0%, #4B30B3 100%) border-box
+        var(--gradient-1) border-box
       `,
       borderRadius: "3em",
-      border: "4px solid transparent",
-    }
+      border: border + " solid transparent",
+    };
   },
-getOtherGradientBox(otherColor) {
+  getOtherGradientBox(otherColor = "#00000000", border = "4px") {
     return {
       background: `
         linear-gradient(${otherColor}, ${otherColor}) padding-box,
-        linear-gradient(90deg, #9F2525 0%, #D36464 100%) border-box
+        var(--gradient-2) border-box
       `,
       borderRadius: "3em",
-      border: "4px solid transparent",
-    }
+      border: border + " solid transparent",
+    };
   },
-  
-}
+};
 
-export default theme
+export default theme;

@@ -10,7 +10,7 @@
       "userid1": {
         "display_name": "Sparkle Star",
         "profile_picture": "pfp1.jpg",
-        "my_chats": [],
+        "my_chats": ["chatid0"],
         "chat_color": "#ff0000"
       },
       "userid2": {
@@ -35,8 +35,8 @@
         "moderators": ["userid1"],
         "icon": "chat.svg",
         "details": {
-          "banner-image": "pfp0.jpg",
-          "background-image": "background0.jpg",
+          "banner_image": "pfp0.jpg",
+          "background_image": "background0.jpg",
           "description": "This is the chat description. ABCDEFGHIJKLMNOP",
           "rules": [["No bullying/harassment", "Please do not harass or bully another member.  This chat is a safe place for everyone. Additionally, the usage of slurs is not allowed. Breaking this rule results in a kick."],["No venting or drama","Although venting can be good for you, please don’t do that here. Additionally, drama isn’t welcome here and we ask that you take it somewhere else as it can make other members uncomfortable. Breaking this rule will result in a warning first, but could lead to a kick if it continues to be a problem."]]
         },
@@ -66,8 +66,8 @@
         "icon": "chat.svg",
         "moderators": ["userid0"],
         "details": {
-          "banner-image": "banner0.png",
-          "background-image": "pfp0.jpg",
+          "banner_image": "banner0.png",
+          "background_image": "pfp0.jpg",
           "description": "This is the chat description. ABCDEFGHIJKLMNOP",
           "rules": [["No bullying/harassment", "Please do not harass or bully another member.  This chat is a safe place for everyone. Additionally, the usage of slurs is not allowed. Breaking this rule results in a kick."],["No venting or drama","Although venting can be good for you, please don’t do that here. Additionally, drama isn’t welcome here and we ask that you take it somewhere else as it can make other members uncomfortable. Breaking this rule will result in a warning first, but could lead to a kick if it continues to be a problem."]]
         },
@@ -93,8 +93,8 @@
         "icon": "chat.svg",
         "moderators": ["userid0"],
         "details": {
-          "banner-image": "pfp0.jpg",
-          "background-image": "pfp0.jpg",
+          "banner_image": "pfp0.jpg",
+          "background_image": "pfp0.jpg",
           "description": "This is the chat description. ABCDEFGHIJKLMNOP",
           "rules": [["No bullying/harassment", "Please do not harass or bully another member.  This chat is a safe place for everyone. Additionally, the usage of slurs is not allowed. Breaking this rule results in a kick."],["No venting or drama","Although venting can be good for you, please don’t do that here. Additionally, drama isn’t welcome here and we ask that you take it somewhere else as it can make other members uncomfortable. Breaking this rule will result in a warning first, but could lead to a kick if it continues to be a problem."]]
         },

@@ -87,7 +87,7 @@
   --send-message-text-color: oklch(0.7749 0.0068 17.3);
 
   /* CHATS SIDEBAR (LEFT SIDE)*/
-  --sidebar-chats-bg: #2f6775;
+  --sidebar-chats-bg: #f3f3f3;
 
   --sidebar-btn-selected-bg: oklch(0.606 0.25 292.717);
   --sidebar-btn-selected-bg-hover: oklch(72.359% 0.2578 334.532);
@@ -100,10 +100,19 @@
   --sidebar-btn-default-text-hover: #ffffff;
 
   /* CHAT DESCRIPTION SIDEBAR (RIGHT SIDE)*/
-  --sidebar-description-bg: rgba(0, 113, 252, 0.944);
+  /* --sidebar-description-bg: rgba(0, 113, 252, 0.944); */
+  --sidebar-description-bg: rgb(0, 0, 0);
   --translucent-timeline-post-bg: rgba(25, 29, 30, 0.7);
+
+  /* this MUST be a gradient. */
+  --gradient-over-chat-sidebar: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  
   /* BORDER COLORS */
-  /* Controlled by theme.ts */
+  /* Used for MY messages */
+  --gradient-1: linear-gradient(90deg, #6ACDE4 0%, #4B30B3 100%);
+  /* Used for OTHER's messages */
+  --gradient-2: linear-gradient(90deg, #9F2525 0%, #D36464 100%);
+  /* ON  */
 }
 
 .dark {

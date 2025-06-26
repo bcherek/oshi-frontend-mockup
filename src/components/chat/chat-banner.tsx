@@ -6,7 +6,7 @@ export function TopBanner(props: { groupChat: GroupChat | null }) {
   }
     
   // Tailwind doesn't support dynamic paths so we have to define it outside   
-  const bannerImage = `/assets/${props.groupChat.details["banner-image"]}`;
+  const bannerImage = `/assets/${props.groupChat.details["banner_image"]}`;
   
   return (
     <div

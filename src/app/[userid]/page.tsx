@@ -1,5 +1,5 @@
-import { Chat } from "@/components/chat";
-import { ChatsSidebar } from "@/components/chats-sidebar";
+import { Chat } from "@/components/chat/chat";
+import { ChatsSidebar } from "@/components/other-chats/chats-sidebar";
 import { getGroupChatMessages, getMe, getMyGroupChats } from "@/api/get-from-database";
 import { Message } from "@/api/get-from-database";
 import { ChatProvider, getChatContext } from  "@/context/ChatContext";
