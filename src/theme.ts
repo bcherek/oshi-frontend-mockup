@@ -23,10 +23,7 @@ const theme: Theme = {
   // gradient boxes stolen from https://codyhouse.co/nuggets/css-gradient-borders
   getMyGradientBox(myColor = "#00000000", border = "4px") {
     return {
-      background: `
-        linear-gradient(${myColor}, ${myColor}) padding-box,
-        var(--gradient-1) border-box
-      `,
+      background: `linear-gradient(${myColor}, ${myColor}) padding-box, var(--gradient-1) border-box`,
       borderRadius: "3em",
       border: border + " solid transparent",
     };
