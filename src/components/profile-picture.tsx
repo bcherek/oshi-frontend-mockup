@@ -1,4 +1,16 @@
 import theme from "@/theme";
+import {Profile} from "@/app/api/types"
+
+export function PicturesFromProfiles(props: {profiles: Profile[]}) {
+  const imgPath = `/assets/`;
+  return <div className="flex flex-row w-fit">
+      {props.profiles.map((path, index) => (
+        <div key={index} className="px-0.75">
+          <ProfilePicture realimagepath={imgPath + path.profile_picture} />
+        </div>
+      ))}
+    </div>
+}
 
 export function StackedProfilePictures(props: { realimagepaths: string[]}) {
   return (

@@ -1,4 +1,5 @@
-import { Message, getProfile } from "@/api/get-from-database";
+import {getProfile } from "@/app/api/get-from-database";
+import { Message } from "@/app/api/types";
 import theme from "@/theme";
 import { ProfilePicture } from "../profile-picture";
 export async function ChatMessage(props: { msg: Message; isMe: boolean }) {
@@ -18,7 +19,7 @@ export async function ChatMessage(props: { msg: Message; isMe: boolean }) {
   );
   return (
     <div className="w-full">
-      <div className="inline-block p-3">
+      <div className="p-3">
         {/* PFP AND NAME */}
         <div className="flex gap-x-5 items-center">
           <ProfilePicture realimagepath={`/assets/${profile.profile_picture}`}/>

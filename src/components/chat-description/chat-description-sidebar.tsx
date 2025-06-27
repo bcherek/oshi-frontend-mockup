@@ -1,4 +1,5 @@
-import { getProfile, GroupChat, Profile } from "@/api/get-from-database";
+import { getProfile} from "@/app/api/get-from-database";
+import {GroupChat, Profile} from "@/app/api/types"
 import {
   Sidebar,
   SidebarContent,
@@ -9,7 +10,8 @@ import {
   SidebarMenu
 } from "@/components/ui/sidebar";
 
-import { HeaderBubble } from "@/components/chat-description/description-bubble";
+import { Bubble, HeaderBubble } from "@/components/chat-description/description-bubble";
+import { PicturesFromProfiles } from "../profile-picture";
 
 // THIS IS A SERVER COMPONENT, NO USEEFFECT OR USE STATE
 export async function ChatDescriptionSidebar({
@@ -29,12 +31,12 @@ export async function ChatDescriptionSidebar({
   console.log(`bg image: ${bgImage}` );
   return (
     <Sidebar side="right" variant="chatdescription" pathtobgimage={bgImage}>
-      <SidebarHeader> {chat.title} </SidebarHeader>
+      <SidebarHeader className="text-white"> {chat.title} </SidebarHeader>
       <SidebarContent className="flex">
         {displayRules(chat)}
         {displayAllUsers(chat)}
       </SidebarContent>
-      {createSidebarFooter(me)}
+      {/* {createSidebarFooter(me)} */}
     </Sidebar>
   );
 
@@ -66,20 +68,17 @@ export async function ChatDescriptionSidebar({
       <>
         <SidebarGroup>
           <SidebarGroupContent>
-            Owner:
-            {" " + owner?.display_name}
+            <HeaderBubble header="owner" body={<PicturesFromProfiles profiles={mods}/>}/>
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
           <SidebarGroupContent>
-            Moderators:
-            {" " + mods.map((mod) => mod.display_name)}
+            <HeaderBubble header="moderators" body={<PicturesFromProfiles profiles={mods}/>}/>
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
           <SidebarGroupContent>
-            Members:
-            {" " + members.map((member) => member.display_name + " ")}
+            <HeaderBubble header="members" body={<PicturesFromProfiles profiles={members}/>}/>
           </SidebarGroupContent>
         </SidebarGroup>
       </>
@@ -89,6 +88,7 @@ export async function ChatDescriptionSidebar({
   async function displayRules(chat: GroupChat | null) {
     if (!chat) return <></>;
     //In the future, this can be refactored to use the SidebarMenuButton to make the rules editable
+    
     return (
       <>
       {/* <SidebarGroup>
@@ -97,12 +97,12 @@ export async function ChatDescriptionSidebar({
       <SidebarGroup>
         <SidebarGroupContent>
           <SidebarMenu>
-            <HeaderBubble header="description" body={chat.details.description}/>
+            <HeaderBubble header="description" body={<span>{chat.details.description}</span>}/>
             {chat.details.rules.map((rule, index) => (
               <HeaderBubble
                 key={index}
                 header={rule[0]}
-                body={rule[1]}
+                body={<span>{rule[1]}</span>}
               />
             ))}
           </SidebarMenu>

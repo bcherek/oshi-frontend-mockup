@@ -1,5 +1,5 @@
 "use client";
-import { ChatListInfo } from "@/api/get-from-database";
+import { ChatListInfo } from "@/app/api/types";
 import { ProfilePicture, StackedProfilePictures } from "../profile-picture";
 import { SidebarMenuItem, SidebarMenuButton } from "../ui/sidebar";
 import { useRouter } from "next/navigation";
@@ -9,7 +9,7 @@ export function ChatSidebarButton(props: {
   isSelected: boolean;
 }) {
   const router = useRouter();
-  console.log("chatSidebarButton");
+  // console.log("chatSidebarButton");
 
   const bannerPath = `/assets/${props.info.banner_image}`;
 

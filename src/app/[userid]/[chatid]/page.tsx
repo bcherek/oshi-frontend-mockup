@@ -5,14 +5,13 @@ import {
   getChatByID,
   getGroupChatMessages,
   getMe,
-  getMyGroupChats,
-  GroupChat,
-} from "@/api/get-from-database";
-import { Message } from "@/api/get-from-database";
+} from "@/app/api/get-from-database";
+import { Message, GroupChat } from "@/app/api/types";
 import { ChatDescriptionSidebar } from "@/components/chat-description/chat-description-sidebar";
 import { TopBanner } from "@/components/chat/chat-banner";
 import { ChatInput } from "@/components/chat/chat-input";
-import { ScrollBar, ScrollArea } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
 type PageProps = {
   params: { userid: string; chatid: string };
 };
@@ -21,12 +20,13 @@ export default async function Home({ params }: PageProps) {
   //@ts-ignore ts(80007) - Params is a Dynamic API and needs an await https://nextjs.org/docs/messages/sync-dynamic-apis
   const { userid, chatid } = await params;
 
+
   console.log("page.tsx");
 
   // let chatListInfos;
   // if (userid) {
   //   console.log("userid in page.tsx", userid);
-  var chatListInfos = await getAllChatListInfos(userid); 
+  var chatListInfos = await getAllChatListInfos(userid);
   // }
   const me = await getMe(userid);
 
@@ -36,29 +36,35 @@ export default async function Home({ params }: PageProps) {
   if (me && chatListInfos) {
     chatHistory = await getGroupChatMessages(userid, chatid);
     chat = await getChatByID(chatid);
-  }
-  else {
+  } else {
     return;
   }
+  
 
   // console.log("chats", chats);
   return (
-    <div className="flex flex-grow h-screen">
-      <ChatsSidebar chatListInfos={chatListInfos} me={me} currid={chatid} />
+    <div className="flex h-screen w-full">
+      <div className="flex-shrink-0">
+        <ChatsSidebar chatListInfos={chatListInfos} me={me} currid={chatid} />
+      </div>
 
-      <div className="flex flex-col w-full flex-grow min-h-0">
-        <div className="flex-none">
+      {/* Center of the screen */}
+      <div className="flex flex-col flex-grow min-w-0 min-h-0 basis-0">
+        <div className="w-full">
           <TopBanner groupChat={chat} />
         </div>
-
-        <div className="flex-grow overflow-y-auto min-h-0">
+        {/* scrollArea does the exact same thing as a normal div it just looks a little better */}
+        <ScrollArea className="flex-grow overflow-y-auto min-h-0 w-full">
           <Chat chatHistory={chatHistory} myuserid={me ? me.userid : null} />
-        </div>
-        <div className="flex-none">
+        </ScrollArea>
+        <div className="w-full flex-shrink-0 p-3">
           <ChatInput />
         </div>
       </div>
-      <ChatDescriptionSidebar chat={chat} me={me} />
+
+      <div className="flex-shrink-0">
+        <ChatDescriptionSidebar chat={chat} me={me} />
+      </div>
     </div>
   );
 }

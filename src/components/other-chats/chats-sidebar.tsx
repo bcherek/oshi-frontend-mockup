@@ -2,7 +2,7 @@ import {
   ChatListInfo,
   GroupChat,
   Profile
-} from "@/api/get-from-database";
+} from "@/app/api/types";
 import {
   Sidebar,
   SidebarContent,
@@ -18,7 +18,7 @@ import { ChatsSidebarClientBoundary } from "../chat-description/chats-sidebar-cl
 
 // THIS IS A SERVER COMPONENT, NO USEEFFECT OR USE STATE
 export async function ChatsSidebar({chatListInfos, me, currid}: {chatListInfos: ChatListInfo[] | null, me: Profile | null, currid: string}) {
-  console.log("ChatsSidebar", chatListInfos);
+  // console.log("ChatsSidebar", chatListInfos);
   if (!chatListInfos) {
     console.error("chats is null in ChatsSidebar");
     return <></>;
